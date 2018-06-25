@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
       this.dataService.getConfig()
       .subscribe( data => {
         this.stuff = data;
-        console.log(data)
+        //console.log(data)
         this.items = this.stuff ;
         }
       )
