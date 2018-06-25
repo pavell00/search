@@ -10,16 +10,16 @@ import { Employee } from './employee';
 export class AppComponent implements OnInit {
   title = 'app';
   //items: Employee[]= [];
-  //items  //= [{ name: "archie", age:25 }, { name: "jake", age:25 }, { name: "richard", age:30 , manager:[{empl:"Jhon"}, {empl:"Dixy"}]}];
+  items = [{ name: "archie", age:23, menager: [{name: "Bill"}] }, { name: "jake", age:25 }, { name: "richard", age:30 , manager:[{empl:"Jhon"}, {empl:"Dixy"}]}];
   stuff: any;
-  items : Employee[]=[];
+  //items : Employee[]=[];
 
   constructor(private dataService: DataService ){ }
 
 
   ngOnInit(){
-  //  this.items = [{ name: "archie" }, { name: "jake" }, { name: "richard" }];
-    this.showConfig();
+    //this.items = [{ name: "archie" }, { name: "jake" }, { name: "richard" }];
+  //  this.showConfig();
   }
  
   showConfig() {
