@@ -10,7 +10,7 @@
 </div>-->
 
 <div>
-  <label>All List</label>
+  <label>All Static List</label>
     <ul *ngFor = "let item of items" >
       <li>
       {{item.name}} {{item.age}}
@@ -19,7 +19,7 @@
 </div>
 
 <div>
-  <label>Filtered List</label><br>
+  <label>Filtered List from http\url "Observer"</label><br>
   <input type="text" [(ngModel)]="filt"><button (click)="editFilter()">Filter</button>
     <ul *ngFor = "let item2 of items2" >
       <li>

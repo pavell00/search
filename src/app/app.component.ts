@@ -12,9 +12,9 @@ export class AppComponent implements OnInit {
   //items: Employee[]= [];
   //items  = [{ name: "archie", age:25 }, { name: "jake", age:25 }, { name: "richard", age:30 , manager:[{empl:"Jhon"}, {empl:"Dixy"}]}];
   items : Employee[];
-  items2 : Employee[];
+  items2 : Employee[]=[];
   items3 : Employee[];
-  filt: string = 'd';
+  filt: string = '';
 
   constructor(private dataService: DataService ){ }
 
