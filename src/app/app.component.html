@@ -1,14 +1,5 @@
 <h1>Test</h1>
 
-<!--<div>
-  <input type="text" [(ngModel)]="term">
-    <ul *ngFor = "let item of items |filter:term" >
-      <li>
-      {{item.name}} {{item.age}}
-    </li>
-  </ul>
-</div>-->
-
 <div>
   <label>All Static List</label>
     <ul *ngFor = "let item of items" >
@@ -27,4 +18,17 @@
     </li>
   </ul>
 </div>
-<!--{{items|json}}-->
+
+<div>
+  <button (click)="getRx()">getRx</button>
+</div>
+<div>
+  <input type="text" [(ngModel)]="term">
+    <ul *ngFor = "let item of rxlist |filter:term" >
+      <li>
+      {{item.name}} {{item.age}}
+    </li>
+  </ul>
+</div>
+<!--{{rxlist|json}}-->
+
