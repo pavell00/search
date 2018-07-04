@@ -1,6 +1,6 @@
 <h1>Test</h1>
 
-<div>
+<!--<div>
   <label>All Static List</label>
     <ul *ngFor = "let item of items" >
       <li>
@@ -11,24 +11,43 @@
 
 <div>
   <label>Filtered List from http\url "Observer"</label><br>
-  <input type="text" [(ngModel)]="filt"><button (click)="editFilter()">Filter</button>
+  <button (click)="editFilter()">Filter on Name</button>
+  <button (click)="findAll()">findAll Fields</button><br>
+  <input type="text" [(ngModel)]="filt">
     <ul *ngFor = "let item2 of items2" >
       <li>
       {{item2.name}} {{item2.age}}
     </li>
   </ul>
 </div>
-
+<button (click)="allFields()">all Fileds in Object</button>
+-->
+<!--<ng2-smart-table [settings]="settings" [source]="items"></ng2-smart-table>-->
 <div>
-  <button (click)="getRx()">getRx</button>
+  <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
+    <ng2-smart-table [settings]="settings" [source]="source" (custom)="onCustom($event)"></ng2-smart-table>
 </div>
-<div>
+
+<!--<div>
+  <label>Filtered List from http\url "Observer" to Array</label><br>
   <input type="text" [(ngModel)]="term">
-    <ul *ngFor = "let item of rxlist |filter:term" >
+    <ul *ngFor = "let item of items3 | filter:term" >
       <li>
       {{item.name}} {{item.age}}
     </li>
   </ul>
+</div>-->
+
+<!--<div>
+  <button (click)="getArray()">getRx</button>
 </div>
+<div>
+  <input type="text" [(ngModel)]="term">
+    <ul *ngFor = "let item of items4 |filter:term" >
+      <li>
+      {{item.name}} {{item.age}}
+    </li>
+  </ul>
+</div>-->
 <!--{{rxlist|json}}-->
 

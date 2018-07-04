@@ -33,6 +33,10 @@ export class DataService {
         });
   }
   
+  getArray() {
+    return [{name:"archie",age:25}, {name:"jake",age:25}, {name:"richard",age:30}];
+  }
+
   extractData(res: HttpResponse<Object>) {
     var array = new Array();
     var key, count = 0;
@@ -40,6 +44,15 @@ export class DataService {
         array.push(res[count++]);
     }
     return array;
+  }
+
+  getData(): Promise<any> {
+    return this.http.get(this.dataUrl)
+    .toPromise()
+    .then(this.extractData)
+    .catch(err => {
+        return Promise.reject(err.error || 'Server error');
+    });
   }
 
 }
