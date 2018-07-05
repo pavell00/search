@@ -25,7 +25,12 @@
 <!--<ng2-smart-table [settings]="settings" [source]="items"></ng2-smart-table>-->
 <div>
   <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
-    <ng2-smart-table [settings]="settings" [source]="source" (custom)="onCustom($event)"></ng2-smart-table>
+    <ng2-smart-table [settings]="settings" [source]="source" (custom)="onCustom($event)" (userRowSelect)="onSelectRow($event)"></ng2-smart-table>
+</div>
+
+<div>
+  <h3>Подробная информация о контакте</h3>
+    <detail [empl]="selectedEmpolee"></detail>
 </div>
 
 <!--<div>

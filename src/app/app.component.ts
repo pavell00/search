@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { Employee } from './employee';
 
+import { customComponent } from './customComponent';
 import { LocalDataSource } from 'ng2-smart-table';
+import { DetailComponent } from './detail.component';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +16,12 @@ export class AppComponent implements OnInit {
   //items: Employee[]= [];
   //items  = [{ name: "archie", age:25 }, { name: "jake", age:25 }, { name: "richard", age:30 , manager:[{empl:"Jhon"}, {empl:"Dixy"}]}];
   items : Employee[];
-  items2 : Employee[]=[];
-  items3 : Employee[]=[];
+  items2 : Employee[] = [];
+  items3 : Employee[] = [];
   items4 : Employee[];
   filt: string = '';
   one : Employee;
+  selectedEmpolee : Employee;
 
   rxlist: Employee[]=[];
   errorMessage: string;
@@ -27,6 +30,18 @@ export class AppComponent implements OnInit {
   source = new LocalDataSource();
 
   settings = {
+    pager: {
+      display: true,
+      perPage: 5
+    },
+    actions: {
+      custom: [
+        {
+          name: 'view',
+          title: '<i class="fa fa-eye" aria-hidden="true"></i>',
+        }
+      ],
+    },
     add: {
       addButtonContent: '<i class="fa fa-plus"></i>',
       createButtonContent: '<i class="fa fa-check-square"></i>',
@@ -61,11 +76,17 @@ export class AppComponent implements OnInit {
       isActive: {
         title: "Enable",
         filter: false
+      },
+      myCol: {
+        title: 'Custom',
+        type: 'custom',
+        renderComponent: customComponent,
+        filter: false
       }
     }
   };
 
-  constructor(private dataService: DataService ){ }
+  constructor(private dataService: DataService ){  }
 
   ngOnInit(){
   //  this.items = [{ name: "archie" }, { name: "jake" }, { name: "richard" }];
@@ -87,7 +108,7 @@ export class AppComponent implements OnInit {
         this.items = data;
         this.items3 = data;
         this.one = data[0]
-        this.source = new LocalDataSource(this.items)
+        this.source = new LocalDataSource(this.items);
         //this.source.load(data);
         }
       )
@@ -103,6 +124,7 @@ export class AppComponent implements OnInit {
 
   onSearch(query: string = '') {
     //console.log(query)
+    this.selectedEmpolee = null;
     if (query === '') { this.showADUsersList(); }
     //if (query === '') { this.source.load(this.items); }
     //if (query === '') { this.showADUsersListPromise(); }
@@ -169,5 +191,10 @@ export class AppComponent implements OnInit {
     {
        console.log('key:' + key);
     }
+  }
+
+  onSelectRow(e: any) {
+    this.selectedEmpolee = e.data;
+    //console.log(e.data);
   }
 }
